@@ -1,0 +1,1 @@
+This repo contains script and scripts to get Colon Adenocarcinoma from CPTAC Data Portal 
