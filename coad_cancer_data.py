@@ -34,9 +34,9 @@ def main():
     labels_dict = {}
     for id in sample_ids:
         if "N" in id:
-            labels_dict[id] = "N"
+            labels_dict[id] = 0
         else:
-            labels_dict[id] = "T"
+            labels_dict[id] = 1
     
     
     os.makedirs(args.output_dir, exist_ok=True)
