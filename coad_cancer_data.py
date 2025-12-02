@@ -42,12 +42,12 @@ def main():
     os.makedirs(args.output_dir, exist_ok=True)
     
     # Construct output file paths
-    output_file = os.path.join(args.output_dir, f"{args.name}.dataset.csv")
-    sample_labels_file = os.path.join(args.output_dir, f"{args.name}.sample_labels.csv")
+    output_file = os.path.join(args.output_dir, f"{args.name}_dataset.csv")
+    sample_labels_file = os.path.join(args.output_dir, f"{args.name}_sample_labels.csv")
     
     expression_matrix.to_csv(output_file, index = True)
     sample_labels_df = pd.DataFrame(list(labels_dict.items()), columns=["Sample ID", "Group Label"])
-    sample_labels_df.to_csv(sample_labels_file, index=True)
+    sample_labels_df.to_csv(sample_labels_file, index=False,header=False)
 
 
 if __name__ == "__main__":
