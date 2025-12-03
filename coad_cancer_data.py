@@ -4,22 +4,20 @@ import os
 
 parser = argparse.ArgumentParser()
 
-# Setup Argument Parser for OmniBenchmark
 
 
-
-parser.parse_args()
 
 
 def main():
 
+    # Setup Argument Parser for OmniBenchmark
     parser = argparse.ArgumentParser(description="Get real cancer proteomics data")
 
     parser.add_argument("--output_dir", type=str, required=True,
                         help="Output directory")
     parser.add_argument("--name", type=str, required=True,
                         help="Dataset name")
-                        
+
     args = parser.parse_args()
     input_data_path = "coad_protein_expression_matrix.csv"#args.input
 
