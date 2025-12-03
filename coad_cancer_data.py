@@ -25,6 +25,8 @@ def main():
     #input_data_path = "coad_protein_expression_matrix.csv"
 
     input_dataframe = pd.read_csv(input_data_path).loc[:, ~pd.read_csv(input_data_path).columns.str.contains('^Unnamed')]
+    input_dataframe = input_dataframe[~input_dataframe.index.duplicated(keep='first')]
+    
     names_ensembl_ids = input_dataframe[["Name","Database_ID"]]
     input_dataframe.set_index('Name', inplace=True)
     input_dataframe.index.name = None
@@ -54,7 +56,7 @@ def main():
     print(f"Saved cancer proteomic sample labels to {sample_labels_file}")
 
     protein_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels_proteins.csv")
-    dummy_df = pd.DataFrame({"protein": expression_matrix.index, "label": 1})
+    dummy_df = pd.DataFrame({"protein": expression_matrix.index, "label": 0})
     dummy_df.to_csv(protein_labels_file, header=False, index=False)
 
     #protein_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels_proteins.csv")
