@@ -8,7 +8,6 @@ parser = argparse.ArgumentParser()
 
 parser = argparse.ArgumentParser(description="Get real cancer proteomics data")
 
-parser.add_argument("-i", "--input", required = True, help="Input dataset to be manipulated")
 parser.add_argument("--output-dir", type=str, required=True,
                         help="Output directory")
 parser.add_argument("--name", type=str, required=True,
@@ -20,7 +19,7 @@ parser.parse_args()
 def main():
 
     args = parser.parse_args()
-    input_data_path = args.input
+    input_data_path = "coad_protein_expression_matrix.csv"#args.input
 
     input_dataframe = pd.read_csv(input_data_path).loc[:, ~pd.read_csv(input_data_path).columns.str.contains('^Unnamed')]
     names_ensembl_ids = input_dataframe[["Name","Database_ID"]]
