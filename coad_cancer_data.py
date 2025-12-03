@@ -54,7 +54,8 @@ def main():
     print(f"Saved cancer proteomic sample labels to {sample_labels_file}")
 
     protein_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels_proteins.csv")
-    pd.DataFrame([["dummy", -1]], columns=["Sample ID", "Group Label"]).to_csv(protein_labels_file, header=False, index=False)
+    dummy_df = pd.DataFrame({"protein": expression_matrix.index, "label": 1})
+    dummy_df.to_csv(protein_labels_file, header=False, index=False)
 
     #protein_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels_proteins.csv")
     #pd.DataFrame().to_csv(protein_labels_file, header=False, index=False)
