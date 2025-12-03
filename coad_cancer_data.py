@@ -52,8 +52,12 @@ def main():
     sample_labels_df = pd.DataFrame(list(labels_dict.items()), columns=["Sample ID", "Group Label"])
     sample_labels_df.to_csv(sample_labels_file, index=False,header=False)
     print(f"Saved cancer proteomic sample labels to {sample_labels_file}")
+
     protein_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels_proteins.csv")
-    pd.DataFrame().to_csv(protein_labels_file, header=False, index=False)
+    pd.DataFrame([["dummy", -1]], columns=["Sample ID", "Group Label"]).to_csv(protein_labels_file, header=False, index=False)
+
+    #protein_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels_proteins.csv")
+    #pd.DataFrame().to_csv(protein_labels_file, header=False, index=False)
 
 
 if __name__ == "__main__":
