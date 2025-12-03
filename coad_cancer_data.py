@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser()
 
 parser = argparse.ArgumentParser(description="Get real cancer proteomics data")
 
-parser.add_argument("--output-dir", type=str, required=True,
+parser.add_argument("--output_dir", type=str, required=True,
                         help="Output directory")
 parser.add_argument("--name", type=str, required=True,
                         help="Dataset name")
@@ -41,12 +41,16 @@ def main():
     os.makedirs(args.output_dir, exist_ok=True)
     
     # Construct output file paths
-    output_file = os.path.join(args.output_dir, f"{args.name}_dataset.csv")
-    sample_labels_file = os.path.join(args.output_dir, f"{args.name}_sample_labels.csv")
+    output_file = os.path.join(args.output_dir, f"{args.name}.synthetic_dataset.csv")
+    sample_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels_proteins.csv")
     
     expression_matrix.to_csv(output_file, index = True)
+    print(f"Saved cancer proteomic dataset to {output_file}")
     sample_labels_df = pd.DataFrame(list(labels_dict.items()), columns=["Sample ID", "Group Label"])
     sample_labels_df.to_csv(sample_labels_file, index=False,header=False)
+    print(f"Saved cancer proteomic sample labels to {sample_labels_file}")
+    protein_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels.csv"")
+    pd.DataFrame().to_csv(protein_labels_file, header=False, index=False)
 
 
 if __name__ == "__main__":
