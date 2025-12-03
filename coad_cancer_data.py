@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 import pandas as pd
 import os
@@ -14,7 +15,14 @@ def main():
                         help="Dataset name")
 
     args = parser.parse_args()
-    input_data_path = "coad_protein_expression_matrix.csv"#args.input
+
+
+
+    # Get the path to the directory where the script resides
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    input_data_path = os.path.join(script_dir, "coad_protein_expression_matrix.csv")
+
+    #input_data_path = "coad_protein_expression_matrix.csv"
 
     input_dataframe = pd.read_csv(input_data_path).loc[:, ~pd.read_csv(input_data_path).columns.str.contains('^Unnamed')]
     names_ensembl_ids = input_dataframe[["Name","Database_ID"]]
