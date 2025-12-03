@@ -2,11 +2,6 @@ import argparse
 import pandas as pd
 import os
 
-parser = argparse.ArgumentParser()
-
-
-
-
 
 def main():
 
