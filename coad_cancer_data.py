@@ -46,7 +46,7 @@ def main():
     os.makedirs(args.output_dir, exist_ok=True)
     
     # Construct output file paths
-    output_file = os.path.join(args.output_dir, f"{args.name}.synthetic_dataset.csv")
+    output_file = os.path.join(args.output_dir, f"{args.name}.dataset.csv")
     sample_labels_file = os.path.join(args.output_dir, f"{args.name}.true_labels.csv")
     
     expression_matrix.to_csv(output_file, index = True)
